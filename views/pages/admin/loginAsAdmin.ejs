@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+  <link rel="stylesheet" href="../../css/general/general.css">
+  <link rel="stylesheet" href="../../css/components/header2.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../css/pages/addArt.css">
+  
+
+</head>
+
+<body>
+
+  <%- include('../../includes/header2'); %>
+
+  <div class=" margin-top-20 margin-bottom-30px">
+    <div class="container">
+    <form action="../admin/loginAsAdmin" method="post" enctype="multipart/form-data">
+      
+      <div class="col-md-2 hidden-sm hidden-xs"></div>
+      <div class="col-md-8 col-xs-12">
+        <div class="row h1 paintiroFont margin-bottom-30px  margin-top-60px">
+
+              LOGIN 
+        </div>
+        <% if(message==true){ %>
+        <div class="flex-container-center margin-top-20">
+          <div style="color: rgb(176, 0, 0);"> Your Email or Password are incorrect </div>
+        </div>
+        <% } %>
+        <div class="row margin-top-20">
+          <div class="col-xs-12">Email *</div>
+          <div class="col-xs-12"><input type="email" name="email" required class="textField" value=""  ></div>
+        </div>
+        <div class="row margin-top-20">
+          <div class="col-xs-12">PASSWORD *</div>
+          <div class="col-xs-12"><input type="password" name="password" required class="textField" value=""  ></div>
+        </div>
+
+        <div class="row margin-top-20">
+          <div class="col-xs-12"><input type="submit" class="blackButton" value="LOGIN"></div>
+        </div>
+        
+      </div>
+      <div class="col-md-2 hidden-sm hidden-xs"></div>
+
+    </form>  
+  </div>
+
+  </div>
+
+  <%- include('../../includes/footer'); %>
+
+
+</body>
+</html>

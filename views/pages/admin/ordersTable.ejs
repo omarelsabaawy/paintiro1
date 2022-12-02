@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-orders</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+  <link rel="stylesheet" href="../css/general/general.css">
+  <link rel="stylesheet" href="../css/components/header2.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/ordersTable.css">
+  
+
+</head>
+
+<body>
+  <%- include('../../includes/header2'); %>
+
+  <div class=" margin-top-20 margin-bottom-30px">
+    <table>
+    <caption class="margin-30px">INCOMPLETE ORDERS </caption>
+  </table>
+    <% if (orders.length > 0) { %>
+    <table>
+      
+      <thead>
+        <tr>
+          <th scope="col" style="width:15%">ID</th>
+          <th scope="col" style="width:15%">DATE</th>
+          <th scope="col" style="width:5%">ARTS</th>
+          <th scope="col" style="width:15%">ADDRESS</th>
+          <th scope="col" style="width:10%">PHONE NUMBER</th>
+          <th scope="col" style="width:5%">TOTAL PRICE</th>
+          <th scope="col">SHIPPED</th>
+          <th scope="col">ON THE WAY</th>
+          <th scope="col">DELIVERED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let order of orders) { %>
+        <tr>
+          <td data-label="ID" ><a class="blackColor" style="text-decoration: none;" href="../../orderDetails/<%=order._id%>"><%=order._id%></a></td>
+          <td data-label="DATE"><%=order.date%></td>
+          <td data-label="ARTS"><%=order.totalArts%></td>
+          <td data-label="ADDRESS"><%=order.address%></td>
+          <td data-label="PHONE NUMBER"><%=order.phoneNumber%></td>
+          <td data-label="TOTAL PRICE"><%=order.totalPrice%></td>
+          <td data-label="SHIPPED">
+            <%if (order.shipped){%>
+                <div class="greyButton">SHIPPED ✓</div>
+            <%}else{%>
+              <form  action="../../admin/shipped"  method="post">
+                <input name="id" value="<%=order._id%>" hidden>
+                <div class=""><input type="submit" name="shipped" class="blackButton" value="SHIPPED"></div>
+              </form>
+            <%}%>
+          </td>
+          <td data-label="ON THE WAY">
+            <%if (order.onTheWay){%>
+              <div class="greyButton">ON THE WAY ✓</div>
+          <%}else{%>
+            <form method="post" action="../../admin/onTheWay">
+              <input name="id" value="<%=order._id%>" hidden>
+              <div class=""><input type="submit" name="onTheWay" class="blackButton" value="ON THE WAY"></div>
+            </form>
+          <%}%>
+          </td>
+          <td data-label="DELIVERED">
+
+            <%if (order.delivered){%>
+              <div class="greyButton">DELIVERED ✓</div>
+          <%}else{%>
+            <form method="post" action="../../admin/delivered">
+              <input name="id" value="<%=order._id%>" hidden>
+              <div class=""><input type="submit" name="delivered" class="blackButton" value="DELIVERED"></div>
+            </form>
+          <%}%>
+       </td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+    <%} else {%>
+      <div class="flex-container-center">
+
+        <h4>NO ORDERS FOUND</h4>
+      </div>
+    <%} %>
+  </div>
+
+  <%- include('../../includes/footer'); %>
+
+</body>
+</html>

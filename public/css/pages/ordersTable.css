@@ -1,0 +1,121 @@
+
+.blackButton{
+  color: white;
+  background-color: rgb(34, 34, 34);
+  border: none;
+  padding: 10px 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.greyButton{
+  color: black;
+  background-color: rgb(167, 167, 167);
+  border: none;
+  padding: 10px 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.blackButton:hover{
+  color: white;
+  background-color: rgb(68, 68, 68);
+  border: none;
+  padding: 10px 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+
+  /* my table*/
+
+  table {
+    border: 1px solid rgba(54, 54, 54, 0.289);
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table tr {
+    background-color: #ffffff;
+    border: 1px solid rgba(112, 112, 112, 0.26);
+    padding: .35em;
+    
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    
+    text-align: center;
+  }
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  @media screen and (max-width: 900px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid rgb(0, 0, 0);
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

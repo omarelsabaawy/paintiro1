@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-messages</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+  <link rel="stylesheet" href="../css/general/general.css">
+  <link rel="stylesheet" href="../css/components/header2.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/ordersTable.css">
+  
+
+</head>
+
+<body>
+  <%- include('../../includes/header2'); %>
+
+  <div class=" margin-top-20 margin-bottom-30px">
+   
+      <H3 class="margin-30px blackColor">Messages </H3>
+      <% if (messages.length > 0) { %>
+        <% for (let message of messages) { %>
+          
+      <div class="margin-30px">
+        <div style="border-style: solid; " class="padding-10px">
+            <p style="background-color: white"><b>DATE: </b><%= message.date%></p>
+            <p style="background-color: white"><b>FIRST NAME: </b><%= message.firstName%></p>
+            <p style="background-color: white"><b>LAST NAME: </b><%= message.lastName%></p>
+            <p style="background-color: white"><b>EMAIL: </b> <%=message.emai%>l</p>
+            <p style="background-color: white"><b>PHONE NUMBER: </b><%= message.phoneNumber%></p>
+            <p style="background-color: white"><b>SUBJECT: </b><%= message.subject%></p>
+            <p style="background-color: white"><b>MESSAGE: </b> <br ><br > <b><%=message.Message%></b></p>
+            <br>
+            <form method="post" action="../admin/deleteMessage">
+                <input hidden name="id" value="<%=message._id%>">
+                <input type="submit" value="DELETE" class="blackButton">
+
+            </form>
+        </div>
+      </div>
+    
+        <%}%>
+      <%}else{%>
+        <div class="flex-container-center">
+
+          <h4>NO MESSAGES FOUND</h4>
+        </div>
+      <%}%>
+     
+  
+
+  </div>
+
+
+
+</body>
+<footer>
+  <%- include('../../includes/footer'); %>
+</footer>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+	
+  <link rel="stylesheet" href="css/general/general.css">
+  <link rel="stylesheet" href="css/components/header2.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/shop.css">
+
+</head>
+
+<body>
+<div>  
+<div>  
+  <%- include('../includes/header3'); %>
+  <div class="container margin-top-20">
+    <% if (products.length > 0) { %>
+      <div class="row">
+      <% for (let product of products) { %>
+          <a href="../shop/<%= product._id %>">
+          <div class="col-md-4 col-xs-6">
+                <!-- <input name="id" value="<%= product._id %>" hidden> -->
+                <div class="flex-container-center">
+                  <div class=" col-xs-12">
+                    <div class="container-overlay" style="width: 93%;">
+                      <img class=" container-overlay image-overlay" style="   object-fit: cover;" src="<%= product.imagePath %>" width="100%">
+                      <div class="overlay">
+                        <div class="text-overlay"><%= product.title %></div> <br>
+                 
+                      </div>
+                    </div>
+                  </div>  
+               </div>
+                <div class="">
+                  <p class="artTitle"><%= product.title %></p>
+                  <div class="flex-container">
+                    <br>
+                      <p class="artFrom">from</p>
+                      <p class="artPrice"><%= product.A3price %> </p> 
+                      <p class="artPrice">EGP</p>
+                  </div>
+                </div>
+            </div>
+          </a>
+          <% } %>
+        </div>
+    <% }else{ %>
+      <div class="flex-container-center">
+        <h3> No ARTS Found.</h3>
+      </div>
+    <% } %>  
+     
+
+  </div>
+</div>
+  <%- include('../includes/footer'); %>
+</div>
+    
+
+</body>
+</html>
+
+
+ <!-- 16 22 6 -->
+<!-- paintiro ().jpg -->
+
+<!-- Untitled (9).jpeg -->
+<!-- Untitled (19).jpeg -->
+<!-- Untitled (13).jpeg -->

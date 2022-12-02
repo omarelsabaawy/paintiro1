@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="../css/general/general.css">
+  <link rel="stylesheet" href="../css/components/header2.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/admin.css">
+  
+
+</head>
+
+<body>
+  <%- include('../../includes/header2'); %>
+
+  <div class=" margin-top-20 margin-bottom-30px">
+    <div class="container">
+   
+      
+      <div class="col-md-2  hidden-xs"></div>
+      <div class="col-md-8 col-xs-12">
+        <div class="row h1 paintiroFont margin-bottom-30px  margin-top-60px"> Admin Authorities</div>
+
+        <div class="row margin-top-20">
+          
+            <a href="../admin/addArt"><div class=" col-sm-4 col-xs-6  margin-top-20 "><div class="blackButton">ADD ARTS</div></div></a>
+            <a href="../shop"><div class=" col-sm-4 col-xs-6  margin-top-20 "><div class="blackButton">ALL ARTS</div></div></a>
+            <a href="../admin/ordersTable"><div class=" col-sm-4 col-xs-6  margin-top-20 "><div class="blackButton">ORDERS</div></div></a>
+            <a href="../admin/messages"><div class=" col-sm-4 col-xs-6  margin-top-20 "><div class="blackButton">MESSAGES</div></div></a>
+            <form action="../admin/logoutAsAdmin" method="post">
+             <div class=" col-sm-4 col-xs-6  margin-top-20 ">
+              <input type="submit" class="blackButton" value="LOGOUT">
+            </div>
+           </form>
+        
+        </div>
+        
+      </div>
+      <div class="col-md-2  hidden-xs"></div>
+
+     
+  </div>
+
+  </div>
+
+
+
+  <%- include('../../includes/footer'); %>
+    
+
+
+</body>
+</html>

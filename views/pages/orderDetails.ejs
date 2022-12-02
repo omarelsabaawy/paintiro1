@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-Order Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
+  
+  <link rel="stylesheet" href="../css/general/general.css">
+  <link rel="stylesheet" href="../css/components/header2.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/order.css">
+
+  
+
+</head>
+
+<body>
+  <div>
+
+  
+  <div>
+  <%- include('../includes/header2'); %>
+
+  <div class=" margin-top-20 margin-bottom-30px">
+    <div >
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
+      <script>
+        function capture () {
+          html2canvas(document.body).then((canvas) => {
+            let a = document.createElement("a");
+            a.download = "ss.png";
+            a.href = canvas.toDataURL("image/png");
+            a.click(); // MAY NOT ALWAYS WORK!
+          });
+        }
+        </script>
+        <div class="flex-container-center hidden-sm hidden-xs ">
+          <input type="button" class="blackButton" value="SCREENSHOT YOUR RECIEPT" onclick="capture()"/>
+        </div><br>
+        <div class="flex-container-center">
+          <p style="color: grey; padding: 20px;" >Take screenshot or Save your order Number to track your order easily.</p>
+        </div>
+    
+  </div>
+ 
+    <br>
+
+    <div class=" specific">
+      <div class="card">
+        <div class="title">Purchase Reciept</div>
+        
+        <div class="info">
+
+
+         
+            <div class="row">
+                <div class="col-xs-12">
+                    <span id="heading">DATE OF RECIEPT</span> 
+                    <span id="details"><%= date.replace('T', ' ').replace('Z', '')%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">ORDER NUMBER</span>
+                    <span id="details"><%=orderId%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">FULL NAME</span>
+                    <span id="details"><%=firstName +' '%><%=lastName%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">EMAIL</span>
+                    <span id="details"><%=email%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">PHONE NUMBER</span>
+                    <span id="details"><%=phoneNumber%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">CITY</span>
+                    <span id="details"><%=city%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">STREET</span>
+                    <span id="details"><%=street%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">BUILDING NUMBER</span>
+                    <span id="details"><%=BuildingNumber%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">FLOOR NUMBER</span>
+                    <span id="details"><%=floorNumber%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">APARTMENT NUMBER</span>
+                    <span id="details"><%=apartmentNumber%></span>
+                </div>
+                <div class="col-xs-12">
+                    <span id="heading">ADDRESS</span>
+                    <span id="details"><%=address%></span>
+                </div>
+            </div>      
+        </div>      
+        <div class="pricing">
+
+          <% for (let product of products) { %>
+            <% if ( product!=null) { %>
+              <div class="flex-container" >
+              <div class="col-xs-4">
+                <a href="../shop/<%= product._id %>">
+                  <img src="../<%= product.imagePath %>" width="100%">
+                </a>
+              </div>
+              <div class="col-xs-8">
+                <p class=" " id="details"><%= product.title %></p>
+                <p class=" heading"  ><%= product.description %></p>
+                <p class=" " id="details">Quantity : <%= product.quantity %></p>
+
+                <% if (product.priceType == 'A0Price') { %>
+                  <p id="details" >Total Price : <%= product.A0price %></p>
+                <% }else if (product.priceType == 'A1Price') { %>
+                  <p id="details" >Total Price : <%= product.A1price %></p>
+                <% }else if (product.priceType == 'A2Price') { %>
+                  <p id="details" >Total Price : <%= product.A2price %></p>
+                <% }else if (product.priceType == 'A3Price') { %>
+                  <p id="details" >Total Price : <%= product.A3price %></p>
+                <% } %>
+                
+              </div>
+              
+              </div>
+              <br><br>
+            <%}else{%>
+              <div class="flex-container" >
+                <div class="col-xs-4">
+                
+                    <img src="../images/notfound.png" width="60%">
+                
+                </div>
+                <div class="col-xs-8">
+                  <!-- <p class=" " id="details">The Art Not Found</p> -->
+              
+                </div>
+                
+                </div>
+                <br><br>
+            <%}%>
+          <%}%>
+
+        <div class="total">
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3"><big> Total price: <%= totalPrice %> EGP</big></div>
+                
+            </div>
+        </div>
+        <div class="tracking">
+            <div class="title">Tracking Order</div>
+        </div>
+        <div class="progress-track">
+            <ul id="progressbar">
+                <li class="step0 active " id="step1">Ordered </li>
+                <li class="step0  text-center  <%= shipped==true ? 'active' : '' %> " id="step2">Shipped</li>
+                <li class="step0  text-right <%= onTheWay==true ? 'active' : '' %>" id="step3">On the way</li>
+                <li class="step0 text-right <%= delivered==true ? 'active' : '' %>" id="step4">Delivered</li>
+            </ul>
+        </div>
+        
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-10">Want any help? Please &nbsp;<a style="text-decoration: none;" href="../../contact-us"> contact us</a></div>
+            </div>
+            
+          
+        </div>
+    </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  
+  <%- include('../includes/footer'); %>
+</div>
+
+
+
+</body>
+</html>

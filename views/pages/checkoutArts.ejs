@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-Check Out</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/general/general.css">
+  <link rel="stylesheet" href="css/components/header2.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/checkoutArts.css">
+  
+
+</head>
+
+<body>
+  
+  <div style="width: 100%;">
+    <%- include('../includes/header2'); %>
+  </div>
+    
+
+
+  <div class=" margin-top-20 margin-bottom-30px">
+    <div class="container">
+   
+      
+      <div class="col-sm-1  hidden-xs"></div>
+      <div class="col-md-10 col-xs-12">
+        <div class="row h1 paintiroFont margin-bottom-30px  margin-top-60px">Cart</div>
+
+        <% if (products.length > 0) { %>
+        <div class="row margin-top-20">
+          <div class="col-md-9 col-xs-12">
+            <div class="flex-container-space-between">
+
+              <% var numberOfAllArts =0;%>
+              <% var priceOfAllArts =0;%>
+
+                <% for (let product of products) { %>
+                  
+              <div class="flex-container">
+                <div class="col-xs-4">
+                <a href="../../shop/<%= product._id%>">
+                    <img src="<%= product.imagePath%>" width="80%">
+                    
+                  </a>
+                </div>
+                  <div class="col-xs-5">
+                    <a href="../../shop/<%= product._id%>">
+                      <p class="paintiroFont  blackColor margin-5px-rl"><b><%= product.title%></b> </p>
+                     </a>
+                    <p class="paintiroFont  grayColor margin-5px-rl">Size: 
+                      <% if (product.description == "A0Price") { %>
+                       A0
+                      <% }else if (product.description == "A1Price") { %>
+                          A1
+                      <% }else if (product.description == "A2Price") { %>
+                          A2
+                      <% }else if (product.description == "A3Price") { %>
+                         A3
+                      <% } %>
+                    </p>
+                    
+                    <div class=" margin-top-20"></div>
+                  <div class="flex-container">
+                    <p class="quantity boldFont blackColor margin-5px-rl ">Quantity: </p>
+                    
+                 
+                      <%  numberOfAllArts += parseInt(product.quantity);%>
+                     
+                    <bold style="font-weight: bold; color: black;"><%= product.quantity%></bold>
+                  </div>
+                  </div>
+                
+                  <div class="col-xs-3">
+                    <div class="">
+                      <p class="paintiroFont  blackColor margin-5px-rl"> 
+                        
+                        <b>
+                          
+                          <% if (product.description == "A0Price") { %>
+                            <%= product.A0price%> EGP
+                            <%  priceOfAllArts += parseInt(product.A0price)*parseInt(product.quantity) ;%>
+                          <% }else if (product.description == "A1Price") { %>
+                              <%= product.A1price%> EGP
+                              <%  priceOfAllArts +=parseInt(product.A1price)*parseInt(product.quantity) ;%>
+                          <% }else if (product.description == "A2Price") { %>
+                              <%= product.A2price%> EGP
+                              <%  priceOfAllArts +=parseInt(product.A2price)*parseInt(product.quantity) ;%>
+                          <% }else if (product.description == "A3Price") { %>
+                              <%= product.A3price%> EGP
+                              <%  priceOfAllArts +=parseInt(product.A3price)*parseInt(product.quantity) ;%>
+                          <% } %>
+                        
+                        </b></p>
+                      <p class="paintiroFont  grayColor margin-5px-rl" style="font-size:0.8em ;"> 
+                        
+                        <b>
+                          TOTAL : 
+                          <% if (product.description == "A0Price") { %>
+                            <%= parseInt(product.A0price)*parseInt(product.quantity)%> EGP
+                           
+                          <% }else if (product.description == "A1Price") { %>
+                              <%= parseInt(product.A1price)*parseInt(product.quantity)%> EGP
+                              
+                          <% }else if (product.description == "A2Price") { %>
+                              <%= parseInt(product.A2price)*parseInt(product.quantity)%> EGP
+                             
+                          <% }else if (product.description == "A3Price") { %>
+                              <%= parseInt(product.A3price)*parseInt(product.quantity)%> EGP
+                              
+                          <% } %>
+                        
+                        </b></p>
+                        <div class="margin-top-20">
+                          <form action="../../removeFromCart" method="POST" >
+
+                            <input type="text" name="id" value="<%=product._id%>" hidden>
+                            <% var checkSize ;%>
+                            <% if (product.description == 'A0Price') { %>
+                              <% checkSize="A0Price" ;%>
+                             <% }else if (product.description == 'A1Price') { %>
+                              <%  checkSize= "A1Price";%>
+                             <% }else if (product.description == 'A2Price') { %>
+                              <% checkSize=  "A2Price";%>
+                             <% }else if (product.description == 'A3Price') { %>
+                              <% checkSize= "A3Price";%>
+                             <% } %>
+                            <input type="text" name="size" value="<%=checkSize%>" hidden>
+                            <input type="submit" value="Remove" class="paintiroFont boldFont grayColor margin-5px-rl " style="border: 0px ; background-color: transparent;">
+
+                          </form>
+                          <!-- <p class="paintiroFont boldFont grayColor margin-5px-rl "> Remove</p> -->
+                        </div>
+                      
+                    </div>
+                  </div>  
+                  <br>
+                  <div class="margin-10px">
+                    <hr class="margin-5px-rl" style="color: black; ">
+                  </div>
+                  <br> 
+        
+              </div>
+                           
+                <% } %>         
+            </div>
+            
+
+          </div>
+          <div class="col-md-3 col-xs-12 checkoutDiv">
+            <p class="h4">ORDER SUMMARY</p>
+            <hr class="margin-5px-rl" style="color: black; ">
+            <div class="flex-container-space-between margin-top-20px">
+              <p>ITEMS <%= numberOfAllArts %></p>
+              <p> <%= priceOfAllArts %> EGP</p>
+
+            </div>
+            <hr class="margin-5px-rl" style="color: black; ">
+            <div class="flex-container-space-between margin-top-10px">
+              <p>VAT</p>
+              <p> 00 EGP</p>
+            </div>
+            <div class="flex-container-space-between margin-top-10px">
+              <p>Delivery</p>
+              <p> 150 EGP</p>
+            </div>
+            <hr class="margin-5px-rl" style="color: black; ">
+            <div class="flex-container-space-between margin-top-10px">
+              <p>Total Cost</p>
+              <p><%= priceOfAllArts+150 %>  EGP</p>
+            </div>
+            <form action="../personalInformation" method="post">
+              <input  type="submit" name="" class="blackButton margin-top-10px" value="Check out">
+            </form>
+          
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-sm-1  hidden-xs"></div>
+
+   
+  </div>
+  <% }else{ %>
+  <div class="flex-container-center margin-top-50px">
+    <h3>NO ARTS IN YOUR CART</h3> 
+    
+  </div>
+  <div class="flex-container-center margin-top-30px">
+    
+      <div class="  margin-top-10px">
+        <a href="../shop">
+        <div class="blackButton flex-container-center"> SHOP NOW</div>
+        </a>
+      </div>
+    
+    
+  </div>
+  <footer>
+  <div class="flex-container-center margin-top-30px">
+    <%- include('../includes/footer'); %>
+    
+  </div>
+</footer>
+  <% } %>
+
+  </div>
+
+  <% if (products.length > 0) { %>
+  <footer>
+  <%- include('../includes/footer'); %>
+</footer>
+  <% } %>
+
+
+</body>
+</html>

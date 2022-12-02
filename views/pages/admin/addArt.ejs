@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-addArt</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+  <link rel="stylesheet" href="../../css/general/general.css">
+  <link rel="stylesheet" href="../../css/components/header2.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../css/pages/addArt.css">
+  
+
+</head>
+
+<body>
+
+  <%- include('../../includes/header2'); %>
+
+  <div class=" margin-top-20 margin-bottom-30px">
+    <div class="container">
+    <form action="
+    <% if (edit) { %>  
+      ../../admin/editArt
+    <% }else{ %>  
+      ../admin/addArt
+  <% } %>  
+    " method="post" enctype="multipart/form-data">
+      
+      <div class="col-md-2 hidden-sm hidden-xs"></div>
+      <div class="col-md-8 col-xs-12">
+        <div class="row h1 paintiroFont margin-bottom-30px  margin-top-60px">
+          <% if (edit) { %>  
+              EDIT ART
+            <% }else{ %>  
+              ADD ART
+          <% } %>  
+        
+        </div>
+        <div class="row margin-top-20">
+          <div class="col-xs-12">Art Name *</div>
+          <div class="col-xs-12"><input type="text" name="name" required class="textField" value="<% if (edit) { %><%= product.title %>  <% } %>"  ></div>
+        </div>
+        <% if (edit) { %>  
+          <input type="text" name="id" hidden value="<%= product._id %>"  >
+        <% } %>  
+           
+        <div class="row margin-top-20">
+          <div class="col-xs-12">Description *</div>
+          <div class="col-xs-12"><textarea name="description"  required class="textField" rows="5" style="resize: vertical;"><% if (edit) { %><%= product.description %>  <% } %>
+          </textarea></div>
+        </div>
+        <% if (!edit) { %>
+          <div class="row margin-top-20">
+            <div class="col-xs-12">Picture *</div>
+            <div class="col-xs-12"><input type="file" name="image" required class="textField"> </div>
+          </div>
+        <% } else { %>
+          <label > NOTE:</label>
+          <h6> CAN NOT EDIT THE PICTURE OF THE ART</h6>
+          <input type="text" hidden name="image" value="<%= product.imagePath %>" required hidden> 
+          <img src="../../<%= product.imagePath %>" height="200px">
+        <% }  %>
+        <div class="row margin-top-20">
+          <div class="col-xs-12">Dimensions And Prices *</div> <br><br>
+          <div>
+          <div class="col-xs-8"> 
+            
+            <label for="A0"> A0 – 841 X 1189MM</label><br>
+          </div>
+          <div class="col-xs-4"><input type="number" name="A0price" required class="textField"
+            value="<% if (edit) { %><%= product.A0price %><% } %>"
+            ></div><br>
+          </div> <br><br>
+          
+          <div>
+          <div class="col-xs-8">
+            
+            <label for="A1">  A1 – 594 X 841MM</label><br>
+          </div>
+          <div class="col-xs-4"><input  type="number" name="A1price" required class="textField"
+            value="<% if (edit) { %><%= product.A1price %><% } %>"
+            ></div><br>
+        </div><br><br>
+          
+        <div>
+          
+          <div class="col-xs-8">
+            
+            <label for="A2"> A2 – 420 X 594MM</label><br>
+          </div>
+          <div class="col-xs-4"><input  type="number" name="A2price" required class="textField"
+            value="<% if (edit) { %><%= product.A2price %><% } %>"
+            ></div><br>
+        </div><br><br>
+          
+        <div>
+          
+          <div class="col-xs-8">
+            
+            <label for="A3"> A3 – 297 X 420MM</label><br>
+          </div>
+          <div class="col-xs-4"><input 
+            type="number" name="A3price" required class="textField"
+            value="<% if (edit) { %><%= product.A3price %><% } %>"
+            ></div><br>
+        </div>
+      </div><br><br>
+        
+
+        <div class="row margin-top-20">
+          <div class="col-xs-12"><input type="submit" class="blackButton" value="<% if (edit) { %> EDIT <% }else{ %> SUBMIT<% } %>"></div>
+        </div>
+        
+      </div>
+      <div class="col-md-2 hidden-sm hidden-xs"></div>
+
+    </form>  
+  </div>
+
+  </div>
+
+  <%- include('../../includes/footer'); %>
+
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+
+.artTitle{
+    padding-top:5px ;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.artDescr{
+  padding-top:5px ;
+    color: rgb(131, 131, 131);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.selectArtSize{
+  padding-top:5px ;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.0em;
+    font-weight:bold ;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.quantity{
+  padding-top:5px ;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.0em;
+    font-weight:bold ;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.artFrom{
+  padding-top:5px ;
+  padding-right:5px ;
+  color: rgb(131, 131, 131);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.artPrice{
+    padding-top:7px ;
+    padding-right:5px ;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.artDimensionsBox{
+  border-radius:0px ;
+  padding: 3px;
+  border: 1px solid rgb(168, 168, 168);
+  font-weight: bold;
+}
+.quantityBox{
+  border-radius:0px ;
+  border: 1px solid rgb(168, 168, 168);
+  padding: 3px;
+  font-weight: bold;
+}
+.blackButton{
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.addToCart{
+  padding: 6px 18px;
+  border-radius:0px ;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+.addToCart:hover{
+  padding: 6px 18px;
+  border-radius:0px ;
+  border: 2px solid black;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}

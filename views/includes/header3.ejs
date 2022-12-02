@@ -1,0 +1,104 @@
+<div class="container">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="../../home">HOME</a>
+      <a href="../../shop">ARTS</a>
+      <a href="../../about-us">ABOUT</a>
+      <a href="../../contact-us">CONTACT</a>
+      <a href="#" onclick="closeNav()" data-toggle="modal" data-target="#myModal">TRACK YOUR ORDER</a>
+      <a href="../../cart">CART</a>
+    </div>
+  </div>
+  <div class="container-fluid " >
+    <row class="col-xs-12 hidden-lg hidden-md hidden-sm text-center"  style="margin: 10px;">
+      
+      <span onclick="openNav()" >
+        <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <line x1="4" y1="8" x2="20" y2="8"></line>
+          <line x1="4" y1="16" x2="20" y2="16"></line>
+       </svg>
+       <!-- <hr style="width: 100%;border-top: 1px solid rgba(200, 200, 200, 0.564);padding: 0px; margin: 0px;"> -->
+      </span>
+    </row>
+    
+  </div>
+    <div id="bg">
+      <div class="container">
+        
+        <div class="flex-container-space-between">
+              <!-- Use any element to open the sidenav -->
+          
+          <div class=" margin-top-10px">
+            <img src="../../img/blackLogo.png" alt="" height="60px">
+          </div>
+          
+        </div>
+        <div class=" hidden-xs">
+        <div class="flex-container margin-top-10px margin-bottom-30px">
+          <div class="  hidden-xs margin-right-10px"><a href="../../home" class="headerItems">HOME</a></div>
+          <div class="  hidden-xs margin-right-10px"><a href="../../shop" class="headerItems">ARTS</a></div>
+          <div class="  hidden-xs margin-right-10px"><a href="../../about-us" class="headerItems">ABOUT</a></div>
+          <div class="  hidden-xs margin-right-10px"><a href="../../contact-us" class="headerItems">CONTACT</a></div>
+    
+          <div class=" hidden-xs margin-right-10px"><a href="../../cart" class="headerItems">CART</a></div>
+        </div>
+      </div>
+        
+  
+      </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content" style='background-image: url("../../img/2.jpg");
+          -webkit-border-radius: 0px !important;
+          -moz-border-radius: 0px !important;
+          border-radius: 0px !important; '>
+            <div class="modal-body">
+              <button style="color: black; 
+              opacity: 1;" type="button" class="close" data-dismiss="modal" >&times;</button>
+              <div style="margin-top: 60px;"></div>
+              <p class="trackOrder">TRACK ORDER</p>
+              <P class="trackOrder">PLEASE WRITE YOUR ORDER NUMBER</P>
+              <form action="../../checkOrderId" method="post">
+              <div style="margin-left: 50px;margin-right: 50px;">
+                <input width="40%" placeholder="   Enter Your Order Number" type="text" name="orderId" required class="textField"> 
+              </div>
+              <br>
+              <div class="flex-container-center">
+      
+                <input type="submit" name="" class="blackButton" value="TRACK ORDERS">
+              </div>
+            </form>
+              <div style="margin-bottom: 60px;"></div>
+            </div>
+         
+          </div>
+      
+        </div>
+      </div>
+
+
+
+      <script>
+        /* Set the width of the side navigation to 250px */
+      /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      }
+      
+      /* Set the width of the side navigation to 0 and the left marginLeft the page content to 0, and the background color of body to white */
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+      }
+      </script>

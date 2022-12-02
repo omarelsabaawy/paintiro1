@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Paintiro-<%= product.title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  bootstrap links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+
+  <link rel="stylesheet" href="../css/general/general.css">
+  <link rel="stylesheet" href="../css/components/header2.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/pages/selectedArt.css">
+  
+
+</head>
+
+<body>
+  <div>
+  <div>
+  <%- include('../includes/header2'); %>
+
+  <div class="container margin-top-20 margin-bottom-30px">
+      <div class="row ">
+        
+                
+          <form  action="../addCart" method="post">
+            
+            
+       
+          <div class="col-md-4  col-xs-12">
+            <div>
+              <p class="artTitle"><%= product.title %></p>
+            </div>
+            <div class="col-sm-12 col-xs-12 hidden-md hidden-lg  text-center margin-top-20 margin-bottom-30px">
+              <img src="../<%= product.imagePath %>"  alt="..." width="60%" >
+          </div>
+            <div class=" margin-top-20">
+                
+                <p class="artDescr margin-top-20" style=" text-transform: uppercase;"><%= product.description %></p>
+                <p class="artDescr margin-top-20"> DIMENSIONS:</p>
+                <p class="artDescr">A0 – 150 X 100CM <b class="blackColor padding-left-20px" id="A0"><%= product.A0price %> EGP</b> </p>
+                <p class="artDescr">A1 – 120 X 80CM <b class="blackColor padding-left-30px" id="A1"><%= product.A1price %> EGP</b></p>
+                <p class="artDescr">A2 – 100 X 70CM <b class="blackColor padding-left-30px" id="A2"><%= product.A2price %> EGP</b></p>
+                <p class="artDescr">A3 – 60 X 80CM <b class="blackColor padding-left-30px" id="A3"><%= product.A3price %> EGP</b></p>
+ 
+            </div>
+
+            <div class=" margin-top-20">
+                
+                <p class="selectArtSize">DIMENSIONS:</p>
+                <select style="padding: 10px; background-color: white; border-color: rgb(205, 205, 205);" name="artDimensions" class="artDimensionsBox"  onchange="priceFunction(event)" required>
+
+                  <option disabled  selected value="">Select Art Dimensions</option>
+                  <option value="A0Price" >A0</option>
+                  <option value="A1Price" >A1</option>
+                  <option value="A2Price" >A2</option>
+                  <option value="A3Price" >A3</option>
+                </select>
+                
+            </div>
+            <div class=" margin-top-20">
+                
+                <p class="quantity">Quantity: </p>
+                <form>
+                  <!-- <input required type="number" value="1" id="quantity" name="quantity" min="1" max="5" class="quantityBox"> -->
+                  <select name="quantity" class="artDimensionsBox"  required style="padding: 10px; background-color: white; border-color: rgb(205, 205, 205);">
+
+                    <option selected value="1" >1</option>
+                    <option value="2" >2</option>
+                    <option value="3" >3</option>
+                    <option value="4" >4</option>
+                    <option value="5" >5</option>
+                  </select>
+                
+                
+                
+                </form>
+            </div>
+            <div class=" margin-top-20">
+                
+              <p class="artDescr">DELIVERY : 14–21 DAYS FROM ORDER.</p>
+            </div>
+            
+            <div class="flex-container margin-top-20">
+                <div id="fromPrice">
+                  <div class="flex-container">
+                    <p class="artFrom">from </p>
+                    <p class="artPrice"><%= product.A3price %> </p>
+                    <p class="artPrice">EGP</p>
+                  </div>
+                </div>
+                <div id="mainPrice" style="display:none" >
+                <div class="flex-container" >
+                  <p class="artFrom">from </p>
+                  <p class="artPrice"><%= product.A3price %> </p>
+                  <p class="artPrice">EGP</p>
+                </div>
+                </div>
+                <div id="A0Price" style="display:none" >
+                  <div class="flex-container" >
+                  <p class="artPrice"><%= product.A0price %> </p>
+                  <p class="artPrice">EGP</p>
+                </div>
+                </div>
+                <div id="A1Price" style="display:none" >
+                  <div class="flex-container" >
+                  <p class="artPrice"><%= product.A1price %> </p>
+                  <p class="artPrice">EGP</p>
+                </div>
+                </div>
+                <div id="A2Price" style="display:none" >
+                  <div class="flex-container" >
+                  <p class="artPrice"><%= product.A2price %> </p>
+                  <p class="artPrice">EGP</p>
+                </div>
+                </div>
+                <div id="A3Price" style="display:none" >
+                  <div class="flex-container" >
+                    <p class="artPrice"><%= product.A3price %> </p>
+                    <p class="artPrice">EGP</p>
+                  </div>
+                </div>
+                
+              
+                
+                <script>
+                   function priceFunction(event) {
+                    var priceId = event.target.value;
+                    console.log("hello");
+    document.getElementById('fromPrice').innerHTML = document.getElementById(priceId).innerHTML;
+  }
+                    
+               </script>
+            </div>
+
+            <input hidden value="<%= product._id %>" name="id">
+            <input type="submit" value="Add To Cart" class="addToCart" >
+          </form>
+          <% if(admin){%>
+            <div class="margin-top-20 flex-container">
+              <form method="post" action="../../admin/edit/<%= product._id %>">
+                <input hidden value="<%= product._id %>" name="id">
+                <div class="margin-10px"><input type="submit" value="Edit" class="blackButton" ></div>
+              </form>  
+              <form method="post" action="../../admin/deleteArt">  
+                <input hidden value="<%= product._id %>" name="id">
+                <div class="margin-10px"><input type="submit" value="Delete" class="blackButton" ></div>
+              </form>  
+            </div>
+            <%}%>
+            
+            
+            </div>
+          <div class="col-md-8 hidden-sm hidden-xs  text-center">
+                <img src="../<%= product.imagePath %>"  alt="..." width="60%" >
+            </div>
+
+
+           
+            
+            
+
+       
+  </div>
+
+  </div>
+
+
+
+  <%- include('../includes/footer'); %>
+ </div>
+
+
+</body>
+</html>
