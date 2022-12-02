@@ -70,7 +70,7 @@ app.use(function(req,res){
 mongoose
   .connect(MONGODB_URI)
   .then(result => {
-    app.listen(port || process.env.PORT);
+    app.listen(process.env.PORT || port);
   })
   .catch(err => {
     console.log(err);
